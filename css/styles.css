@@ -130,9 +130,12 @@ body {
 
 .filter-buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
+    padding: 0 1rem; 
+    box-sizing: border-box;
   }
   
   .filter {
@@ -210,4 +213,11 @@ body {
     .social-icons a {
         font-size: 20px;
     }
+
+@media (max-width: 480px) {
+    .filter {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
 }
