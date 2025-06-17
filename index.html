@@ -1,86 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Daily Tea Leaf 🍵</title>
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Merriweather:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --primary: #a3b18a;
+      --secondary: #c9b79c;
+      --accent: #8e6c53;
+      --background: #f5f0e6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--background);
+      color: var(--accent);
+      font-family: 'Merriweather', serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      padding: 40px;
+      text-align: center;
+    }
+    header h1 {
+      font-family: 'Amatic SC', cursive;
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .brew-area {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      padding-top: 50px;
+    }
+
+    /* Steam wisps */
+    #steam {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    #steam span {
+      position: absolute;
+      bottom: 80px;
+      width: 8px;
+      height: 20px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 50%;
+      animation: steam 3s ease-in-out infinite;
+    }
+    #steam span:nth-child(1) { left: -10px; animation-delay: 0; }
+    #steam span:nth-child(2) { left: 0;   animation-delay: 1s; }
+    #steam span:nth-child(3) { left: 10px; animation-delay: 2s; }
+
+    @keyframes steam {
+      0%   { opacity: 0; transform: translateY(0)   scale(0.8); }
+      50%  { opacity: 0.6; transform: translateY(-20px) scale(1); }
+      100% { opacity: 0;   transform: translateY(-40px) scale(1.2); }
+    }
+
+    /* Teacup and leaves */
+    #teacup {
+      width: 100%;
+      cursor: pointer;
+      display: block;
+    }
+    #teacup.stirring {
+      opacity: 0.8;
+    }
+
+    /* Fortune box */
+    #fortune {
+      margin-top: 20px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 10px 20px;
+      background: var(--secondary);
+      border-radius: 8px;
+      font-family: 'Amatic SC', cursive;
+    }
+    #fortune.visible {
+      opacity: 1;
+    }
+
+    /* “How It Works” */
+    .how-it-works {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .how-it-works h2 {
+      font-family: 'Amatic SC', cursive;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .how-it-works .step {
+      display: inline-block;
+      width: 100px;
+      margin: 0 10px;
+    }
+    .how-it-works .step svg {
+      width: 50px;
+      height: 50px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+    }
+    .how-it-works .step p {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <button class="hamburger" aria-label="Toggle navigation">
-            &#9776;
-        </button>
-        <div class="logo">
-            <a href="index.html"><img src="img/Logo.png" alt="Logo"></a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Work</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
 
-        <div class="ko-fi-button">
+  <header>
+    <h1>The Daily Tea Leaf 🍵</h1>
+  </header>
 
-        </div>
-        
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/brittani-ford-8617a81b7/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/CodesandBeyond" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://ko-fi.com/R6R81FHH27" target="_blank" class="kofi-btn" aria-label="Support me on Ko-fi">
-              <img src="https://storage.ko-fi.com/cdn/kofi3.png?v=6" alt="Buy Me a Coffee at ko-fi.com"/></a>
-        </div>
-    </nav>
-    <section class="project-covers">
-        <div class="filter-buttons">
-            <button class="filter" data-category="websites">Websites</button>
-            <button class="filter" data-category="animations">Animations</button>
-            <button class="filter" data-category="navigation">Navigation Bars</button>
-            <button class="filter" data-category="graphic-designs">Graphic Designs</button>
-          </div>
-          <div class="category websites">
-            <ul>
-              <li><a href="https://codesandbeyond.github.io/Belle-Chic/" target="_blank"><figure><img src="img/Belle Chic.png" alt="Women's Fashion Shop Screenshot"></figure></a></li>
-              <li><a href="https://codesandbeyond.github.io/Cafeau/" target="_blank"><figure><img src="img/Cafeau.png" alt="Coffee Shop Screenshot"></figure></a></li>
-              <li><a href="https://codesandbeyond.github.io/WhiskersandWool/" target="_blank"><figure><img src="img/Whiskers and Wool Landing Page.png" alt="Pet Shop Landing Page"></figure></a></li>
-            </ul>
-          </div>
+  <div class="brew-area">
+    <!-- Animated steam -->
+    <div id="steam">
+      <span></span><span></span><span></span>
+    </div>
 
-          <div class="category animations">
-            <ul>
-              <li><a href="https://codesandbeyond.github.io/Time-Vortex-Animation/" target="_blank"><figure><img src="img/Time Vortex Animation.png" alt="Time Vortex Animation Screenshot"></figure></a></li>
-              <li><a href="https://codesandbeyond.github.io/Dot-Swirl-Animation/" target="_blank"><figure><img src="img/Dot Swirl Animation.png" alt="Dot Swirl Animation Screenshot"></figure></a></li>
-              <li><a href="https://codesandbeyond.github.io/Battery-Charge/" target="_blank"><figure><img src="img/Battery Charge Loading Screen.png" alt="Battery Charge Loading"></figure></a></li>
-            </ul>
-          </div>
+    <!-- Teacup SVG with a rotating leaves group -->
+    <svg id="teacup" viewBox="0 0 100 100">
+      <!-- Cup bowl -->
+      <path
+        d="M20,60 Q20,30 50,30 Q80,30 80,60 Z"
+        fill="none"
+        stroke="var(--accent)"
+        stroke-width="3"
+      />
+      <!-- Handle -->
+      <path
+        d="M80,40 Q90,50 80,60"
+        fill="none"
+        stroke="var(--accent)"
+        stroke-width="3"
+      />
+      <!-- Placeholder tea leaves -->
+      <g id="leaves">
+        <circle cx="45" cy="55" r="2" fill="var(--accent)"/>
+        <circle cx="50" cy="58" r="2" fill="var(--accent)"/>
+        <circle cx="55" cy="54" r="2" fill="var(--accent)"/>
+        <circle cx="53" cy="60" r="2" fill="var(--accent)"/>
+        <circle cx="47" cy="60" r="2" fill="var(--accent)"/>
+      </g>
+    </svg>
 
-          <div class="category navigation">
-            <ul>
-              <li><a href="https://codesandbeyond.github.io/Glassmorph-Navbar/" target="_blank"><figure><img src="img/Glassmorph Navigation Bar.png" alt="Glass Nav Screenshot"></figure></a></li>
-              <li><a href="https://codesandbeyond.github.io/StitchedNavigation/" target="_blank"><figure><img src="img/Stitched Navigation Bar.png" alt="Stitched Navigation Bar"></figure></a></li>
-            </ul>
-          </div>
+    <!-- Fortune text -->
+    <div id="fortune"></div>
+  </div>
 
-          <div class="category graphic-designs active">
-            <ul>
-              <li><a href="https://ibb.co/2164Lzkb" target="_blank"><figure><img src="https://i.ibb.co/0RXbW0Gw/Globed-Day-Ruins.png" alt="Globed-Day-Ruins"></figure></a></li>
-              <li><a href="https://ibb.co/ccXJHxNg" target="_blank"><figure><img src="https://i.ibb.co/JRFn4CzB/Globed-Night-Ruins.png" alt="Globed-Night-Ruins"></figure></a></li>
-              <li><a href="https://ibb.co/xK0xsW3B" target=""><figure><img src="https://i.ibb.co/Xfgc41VK/Globed-Twilight-Ruins.png" alt="Globed-Twilight-Ruins"></figure></a></li>
-              <li><a href="https://ibb.co/xKjyLDNZ" target="_blank"><figure><img src="https://i.ibb.co/4wTct7Hk/A.png" alt="Mossy Letter A"></figure></a></li>
-              <li><a href="https://ibb.co/Psj0w3qm" target="_blank"><figure><img src="https://i.ibb.co/DPWT5s0V/B.png" alt="Mossy Letter B"/></figure></a></li>
-              <li><a href="https://ibb.co/NdBRRZ0g" target="_blank"><figure><img src="https://i.ibb.co/DH2dd5BP/C.png" alt="Mossy Letter C"></figure></a></li>
-              <li><a href="https://ibb.co/hJVwMFmg" target="_blank"><figure><img src="https://i.ibb.co/21dH63kF/Vined-Hourglass.png" alt="Vined-Hourglass"></figure></a></li>
-              <li><a href="https://ibb.co/fdBJMhVp" target="_blank"><figure><img src="https://i.ibb.co/Qvz0927N/Surfboard-Beach.png" alt="Surfboard-Beach"/></figure></a></li>
-              <li><a href="https://ibb.co/kgVr0M0s" target="_blank"><figure><img src="https://i.ibb.co/HDLMYXYf/Beach-Flat.png" alt="Beach-Flat"/></figure></a></li>
-              <li><a href="https://ibb.co/LdWgsBTJ" target=""><figure><img src="https://i.ibb.co/whXQ28nw/Abstract-Beach.png" alt="Abstract-Beach"/></figure></a></li>
-              <li><a href="https://ibb.co/PvTnb0vK" target="_blank"><figure><img src="https://i.ibb.co/TxKSndx6/Beach-Wave.png" alt="Beach-Wave"/></figure></a></li>
-            </ul>
-          </div>
-    </section>
-    <script src="js/script.js"></script>
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="step">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 8v4l2 2"/>
+      </svg>
+      <p>Click the cup</p>
+    </div>
+    <div class="step">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2a10 10 0 1 0 10 10"/>
+        <polyline points="16 6 12 2 8 6"/>
+      </svg>
+      <p>Stir to swirl</p>
+    </div>
+    <div class="step">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 4h16v16H4z"/>
+        <line x1="8" y1="8" x2="16" y2="8"/>
+        <line x1="8" y1="12" x2="16" y2="12"/>
+      </svg>
+      <p>Read your fortune</p>
+    </div>
+  </section>
+
+  <footer>
+    ☕ Infused with magic by The Daily Tea Leaf.
+  </footer>
+
+  <script>
+    // Array of poetic fortunes
+    const fortunes = [
+      "A gentle breeze carries your wish across distant shores.",
+      "In every cup, a new beginning stirs its silent promise.",
+      "Trust the ripple you’ve made; it will return as waves of wonder.",
+      "Your heart’s desire will drift to you like leaves on a pond.",
+      "Embrace the unknown; the sweetest leaf is yet to float.",
+      "Tiny ripples grow into waves—so too will your fortunes bloom."
+    ];
+
+    const cup       = document.getElementById('teacup');
+    const leaves    = document.getElementById('leaves');
+    const fortuneEl = document.getElementById('fortune');
+    let isStirring   = false;
+    let lastAngle    = 0;
+    let totalRotation = 0;
+    let revealed      = false;
+
+    function getAngle(x, y) {
+      const rect = cup.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top  + rect.height / 2;
+      return Math.atan2(y - cy, x - cx) * (180 / Math.PI);
+    }
+
+    function showFortune() {
+      if (revealed) return;
+      const pick = fortunes[Math.floor(Math.random() * fortunes.length)];
+      fortuneEl.textContent = pick;
+      fortuneEl.classList.add('visible');
+      revealed = true;
+    }
+
+    // Start stirring
+    cup.addEventListener('pointerdown', e => {
+      if (revealed) return;
+      isStirring = true;
+      lastAngle = getAngle(e.clientX, e.clientY);
+      cup.setPointerCapture(e.pointerId);
+      cup.classList.add('stirring');
+    });
+
+    // Handle pointer move → rotate leaves
+    cup.addEventListener('pointermove', e => {
+      if (!isStirring) return;
+      const angle = getAngle(e.clientX, e.clientY);
+      const delta = angle - lastAngle;
+      totalRotation += delta;
+      leaves.style.transform = `rotate(${totalRotation}deg)`;
+      lastAngle = angle;
+
+      // Once rotated full circle, reveal
+      if (Math.abs(totalRotation) >= 360) {
+        showFortune();
+        cup.releasePointerCapture(e.pointerId);
+        cup.classList.remove('stirring');
+        isStirring = false;
+      }
+    });
+
+    // Stop stirring
+    cup.addEventListener('pointerup', e => {
+      isStirring = false;
+      cup.releasePointerCapture(e.pointerId);
+      cup.classList.remove('stirring');
+    });
+
+    // Fallback: click to reveal if not stirred
+    cup.addEventListener('click', () => {
+      if (!revealed) showFortune();
+    });
+  </script>
+
 </body>
 </html>
